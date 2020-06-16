@@ -46,7 +46,7 @@ class DoubleProgression(start: Double, endInclusive: Double, val step: Double) :
 
         override fun nextDouble(): Double {
             val value: Double = next
-            if (value == finalElement) {
+            if (value >= finalElement) {
                 if (!hasNext) throw NoSuchElementException()
                 hasNext = false
             } else {
