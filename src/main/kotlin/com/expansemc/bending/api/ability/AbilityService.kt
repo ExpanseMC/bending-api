@@ -10,6 +10,6 @@ interface AbilityService {
         // TODO: better null handling
         @JvmStatic
         val instance: AbilityService
-            get() = Bukkit.getServicesManager().provide<AbilityService>()!!
+            get() = Bukkit.getServicesManager().provide()!!
     }
 }

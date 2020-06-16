@@ -16,6 +16,6 @@ interface BenderService {
         // TODO: better null handling
         @JvmStatic
         val instance: BenderService
-            get() = Bukkit.getServicesManager().provide<BenderService>()!!
+            get() = Bukkit.getServicesManager().provide()!!
     }
 }
