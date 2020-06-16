@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.expansemc"
-version = "0.2.0"
+version = properties["version.api"]!!
 
 repositories {
     mavenCentral()
