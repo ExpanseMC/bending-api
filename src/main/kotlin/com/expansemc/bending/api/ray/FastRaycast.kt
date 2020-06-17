@@ -1,5 +1,7 @@
 package com.expansemc.bending.api.ray
 
+import com.expansemc.bending.api.protection.BlockProtectionService
+import com.expansemc.bending.api.protection.EntityProtectionService
 import com.expansemc.bending.api.util.getNearbyEntities
 import com.expansemc.bending.api.util.getNearbyLocations
 import com.expansemc.bending.api.util.isNearDiagonalWall
@@ -68,7 +70,10 @@ data class FastRaycast(
                 continue
             }
 
-            // TODO: block protection
+            if (BlockProtectionService.instance.isProtected(source, test)) {
+                // Can't bend here!
+                continue
+            }
 
             if (affect(test)) {
                 // If the block was successfully affected, add it to the collection.
@@ -84,7 +89,10 @@ data class FastRaycast(
                 continue
             }
 
-            // TODO: pvp protection
+            if (EntityProtectionService.instance.isProtected(source, test)) {
+                // Can't bend this entity!
+                continue
+            }
 
             if (affect(test)) {
                 // If the entity was successfully affected, add it to the collection.
